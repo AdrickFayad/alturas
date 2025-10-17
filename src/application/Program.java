@@ -31,12 +31,12 @@ public class Program {
 			
 			if (vect1[i].getAge()<16) {
 				smaller16 ++;
-				
 			}
 			
 		}
 		
 		double media = sum/n;
+
 		double percentage =(double) (smaller16 * 100)/n;
 		
 		System.out.printf("\nAltura média: %.2f%n", media);
@@ -46,6 +46,7 @@ public class Program {
 		for (int i=0;i<n;i++) {
 			if (vect1[i].getAge()<16) {
 				System.out.println(vect1[i].getName());;
+	
 			}
 		}
 		
@@ -54,3 +55,4 @@ public class Program {
 	}
 
 }
+
