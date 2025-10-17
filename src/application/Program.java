@@ -14,7 +14,6 @@ public class Program {
 		System.out.print("Quantas pessoas serao digitadas? ");
 		int n = sc.nextInt();
 		Individual[]vect1 = new Individual[n];
-		Individual[]vect2 = new Individual[n];
 		double sum = 0;
 		int smaller16 = 0;
 		
@@ -32,18 +31,27 @@ public class Program {
 			
 			if (vect1[i].getAge()<16) {
 				smaller16 ++;
-				vect2[i] = new Individual(name);
 			}
 			
 		}
 		
 		double media = sum/n;
-		smaller16 = (smaller16 * 100)/n;
+		// A linha a seguir tinha um bug. Ela realizava uma divisão de inteiros e armazenava o resultado em uma variável int.
+		// Criei uma variável 'double' para a porcentagem para garantir o cálculo correto de ponto flutuante.
+		double percentage = (double) smaller16 * 100.0 / n;
 		
 		System.out.printf("\nAltura média: %.2f%n", media);
-		System.out.printf("Pessoas com menos de 16 anos: %.2f %% %n", smaller16);
+		// A linha a seguir tentava imprimir um inteiro com um especificador de formato float (%.2f).
+		// Agora está corrigido para usar a variável 'percentage'. Também mudei para uma casa decimal (%.1f).
+		System.out.printf("Pessoas com menos de 16 anos: %.1f%% %n", percentage);
+		
+		// O loop abaixo estava causando um NullPointerException porque tentava acessar elementos
+		// em um array que não estava totalmente preenchido ('vect2').
+		// Este loop corrigido itera pelos dados originais e imprime os nomes das pessoas com menos de 16 anos.
 		for (int i=0;i<n;i++) {
-			System.out.println(vect2[i].getName());
+			if (vect1[i].getAge() < 16) {
+				System.out.println(vect1[i].getName());
+			}
 		}
 		
 		
@@ -51,3 +59,4 @@ public class Program {
 	}
 
 }
+
