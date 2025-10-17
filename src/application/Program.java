@@ -14,7 +14,6 @@ public class Program {
 		System.out.print("Quantas pessoas serao digitadas? ");
 		int n = sc.nextInt();
 		Individual[]vect1 = new Individual[n];
-		Individual[]vect2 = new Individual[n];
 		double sum = 0;
 		int smaller16 = 0;
 		
@@ -32,18 +31,22 @@ public class Program {
 			
 			if (vect1[i].getAge()<16) {
 				smaller16 ++;
-				vect2[i] = new Individual(name);
+				
 			}
 			
 		}
 		
 		double media = sum/n;
-		smaller16 = (smaller16 * 100)/n;
+		double percentage =(double) (smaller16 * 100)/n;
 		
 		System.out.printf("\nAltura média: %.2f%n", media);
-		System.out.printf("Pessoas com menos de 16 anos: %.2f %% %n", smaller16);
+		
+		
+		System.out.printf("Pessoas com menos de 16 anos: %.1f%%%n", percentage);
 		for (int i=0;i<n;i++) {
-			System.out.println(vect2[i].getName());
+			if (vect1[i].getAge()<16) {
+				System.out.println(vect1[i].getName());;
+			}
 		}
 		
 		

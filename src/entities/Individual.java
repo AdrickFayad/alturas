@@ -10,9 +10,7 @@ public class Individual {
 		this.age = age;
 		this.hieght = hieght;
 	}
-	public Individual(String name) {
-		this.name = name;
-	}
+	
 	public String getName() {
 		return name;
 	}
